@@ -1,0 +1,36 @@
+version: '3.6'
+services:
+  postgres:
+    container_name: postgres-db
+    image: postgres
+    restart: always
+    volumes:
+    - db_data:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+  graphql-engine:
+    container_name: hasura
+    image: hasura/graphql-engine:v2.9.0.cli-migrations-v3
+    ports:
+    - "8080:8080"
+    depends_on:
+    - "postgres"
+    restart: always
+    env_file:
+      - ./.env
+
+  plugin-server:
+    container_name: plugin-server
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+      target: development
+    command: npm run start:dev
+    volumes:
+      - ./server/:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env
+volumes:
+  db_data:
