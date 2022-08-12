@@ -1,0 +1,10 @@
+table:
+  name: webhook_event
+  schema: public
+object_relationships:
+  - name: event
+    using:
+      foreign_key_constraint_on: event_id
+  - name: webhook
+    using:
+      foreign_key_constraint_on: webhook_id

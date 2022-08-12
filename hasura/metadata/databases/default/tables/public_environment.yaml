@@ -1,0 +1,15 @@
+table:
+  name: environment
+  schema: public
+object_relationships:
+  - name: project
+    using:
+      foreign_key_constraint_on: project_id
+array_relationships:
+  - name: env_features
+    using:
+      foreign_key_constraint_on:
+        column: env_id
+        table:
+          name: env_feature
+          schema: public

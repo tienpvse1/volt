@@ -1,0 +1,15 @@
+table:
+  name: webhook
+  schema: public
+object_relationships:
+  - name: project
+    using:
+      foreign_key_constraint_on: project_id
+array_relationships:
+  - name: webhook_event
+    using:
+      foreign_key_constraint_on:
+        column: webhook_id
+        table:
+          name: webhook_event
+          schema: public

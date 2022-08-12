@@ -1,0 +1,10 @@
+table:
+  name: env_feature
+  schema: public
+object_relationships:
+  - name: environment
+    using:
+      foreign_key_constraint_on: env_id
+  - name: feature
+    using:
+      foreign_key_constraint_on: feature_id

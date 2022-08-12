@@ -1,0 +1,18 @@
+table:
+  name: event
+  schema: public
+array_relationships:
+  - name: event_histories
+    using:
+      foreign_key_constraint_on:
+        column: event_id
+        table:
+          name: event_history
+          schema: public
+  - name: webhook_event
+    using:
+      foreign_key_constraint_on:
+        column: event_id
+        table:
+          name: webhook_event
+          schema: public

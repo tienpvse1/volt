@@ -1,0 +1,18 @@
+table:
+  name: feature
+  schema: public
+array_relationships:
+  - name: env_features
+    using:
+      foreign_key_constraint_on:
+        column: feature_id
+        table:
+          name: env_feature
+          schema: public
+  - name: tags
+    using:
+      foreign_key_constraint_on:
+        column: feature_id
+        table:
+          name: feature_tag
+          schema: public

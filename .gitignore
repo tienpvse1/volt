@@ -1,2 +1,6 @@
 .env
+.env.production
+.env.development
+.env
 *.local
+apollo.config.js
